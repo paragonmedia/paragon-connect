@@ -17,7 +17,15 @@ export default async function handler(req, res) {
 
   const data = await response.json();
 
-  console.log("GOOGLE TOKEN RESPONSE:", data);
+  // 👇 IMPORTANTE
+  const accessToken = data.access_token;
 
-  res.send("Google Analytics conectado correctamente");
+  console.log("ACCESS TOKEN:", accessToken);
+
+  // 👉 temporal (luego lo guardamos en DB)
+  res.send(`
+    Google conectado ✅ <br/><br/>
+    Token:<br/>
+    ${accessToken}
+  `);
 }
